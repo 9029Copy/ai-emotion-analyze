@@ -11,20 +11,20 @@
 
 ## 二、功能特点
 - 批量处理商品评论情感分析
-- 分析结果输出为Excel格式，包含原始评论和情感分类
+- 分析结果输出为Excel格式，包含原始评论、情感分类、标签提取与评分
 - 调整输出Excel文件列宽，优化可读性
 - 能够输出每次消耗的token量
 - 能够自定义调用的AI模型
 
 ## 三、环境要求
 - Python 3.7+
-- 依赖库：pandas, openpyxl, httpx, argparse
+- 依赖库：pandas, openpyxl, httpx, argparse, jsonschema
 
 ## 四、安装步骤
 1. 克隆项目到本地
 2. 安装依赖
     ```bash
-    pip install pandas openpyxl httpx
+    pip install pandas openpyxl httpx jsonschema
     ```
 
 ## 五、配置说明
@@ -57,10 +57,10 @@ python data_analyze.py -k <your_api_key>
 ### 3、查看结果
 结果最终保存在同目录下的output.xlsx中，包含三列：商品评论、情感分类、消耗token量，例如：
 
-| 商品评论 | 情感分类 | 消耗token量 |
-| :---: | :---: | :---: |
-| 这是一条商品评论 | 正面 | 100 |
-| 这是另一条商品评论 | 负面 | 150 |
+| 商品评论 | 情感分类 | 标签 | 评分 | 处理状态 | 消耗token量 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 这是一条商品评论 | 正面 | ['标签1', '标签2'] | 9 | 完成 | 100 |
+| 这是另一条商品评论 | 负面 | ['标签3', '标签4'] | 4 | 完成 | 150 |
 
 ### 4、命令行参数说明
 | 参数 | 全称 | 说明 | 必需 |
